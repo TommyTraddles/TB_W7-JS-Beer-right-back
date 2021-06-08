@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root{
+	/* color */
+	--red: #FF3951;
+	/* neutros */
+	/* font-size */
+	/* font-weigth */
+}
+
+/* ----------------------------- GLOBAL */
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;;
+}
+body{
+	background-color: black;
+	color: white;
+}
+
+/* ----------------------------- BUTTONS */
+/* TYPES OF BUTTONS */
+
+
+/* -------------------------------------------------- RESULTS */
+/* ----------------------------- ASIDE FILTER */
+.filter{
+	border: 1px solid red;
+}
+
+.filter__control{
+	border: 1px solid red;
+}
+
+/* SEARCH */
+.filter__search{
+	border: 1px solid red;
+}
+
+/* FILTERS */
+.filter__filter{
+	border: 1px solid red;
+}
+.filter__filter__AVB{
+	border: 1px solid red;
+}
+.filter__filter__AVB_range{
+	border: 1px solid red;
+}
+.filter__filter__AVB_slider{
+	border: 1px solid red;
+}
+.filter__filter__IBU{
+	border: 1px solid red;
+}
+.filter__filter__IBU_range{
+	border: 1px solid red;
+}
+.filter__filter__IBU_slider{
+	border: 1px solid red;
+}
+.filter__filter__EBC{
+	border: 1px solid red;
+}
+.filter__filter__EBC_range{
+	border: 1px solid red;
+}
+.filter__filter__EBC_slider{
+	border: 1px solid red;
+}
+.filter__filter__brew{
+	border: 1px solid red;
+}
+.filter__filter__brew_range{
+	border: 1px solid red;
+}
+.filter__filter__brew_slider{
+	border: 1px solid red;
+}
+/* SORT */
+.filter__sort{
+	border: 1px solid red;
+}
+/* SHOW */
+.filter__show{
+	border: 1px solid red;
+}
+/* RESULTS */
+.filter__results{
+	border: 1px solid red;
+}
+/* BUTTONS */
+.filter__buttons{
+	border: 1px solid red;
+}
+
+/* ----------------------------- HEADER */
+.header{
+	border: 1px solid blue;
+}
+.header__filter{
+	border: 1px solid blue;
+}
+.header__back{
+	border: 1px solid blue;
+}
+.header__logo{
+	border: 1px solid blue;
+}
+.header__user{
+	border: 1px solid blue;
+}
+
+/* ----------------------------- HERO */
+.main{
+	border: 1px solid green;
+}
+.main__title{
+	border: 1px solid green;
+}
+
+/* ----------------------------- FILTER-TAGS */
+.tag{
+	border: 1px solid orange;
+}
+.tag__title{
+	border: 1px solid orange;
+}
+.tag__clear{
+	border: 1px solid orange;
+}
+.tag__cont{
+	border: 1px solid orange;
+}
+.tag__cont_tag{
+	border: 1px solid orange;
+}
+
+/* ----------------------------- RANDOM */
+.random{
+	border: 1px solid red;
+}
+/* HOVER */
+
+/* ----------------------------- CARD */
+.card{
+	border: 1px solid blue;
+}
+.card__cont{
+	border: 1px solid blue;
+}
+.card__cont__card{
+	border: 1px solid blue;	
+}
+.card__cont__card__ABV{
+	border: 1px solid blue;
+}
+.card__cont__card__title{
+	border: 1px solid blue;
+}
+.card__cont__card__botom{
+	border: 1px solid blue;
+}
+.card__cont__card__image{
+	border: 1px solid blue;
+}
+/* GRID & LIST */
+/* HOVER */
+
+/* ----------------------------- PAGINATION */
+.page{
+	border: 1px solid green;
+}
+.page__left{
+	border: 1px solid green;
+}
+.page__number{
+	border: 1px solid green;
+}
+.page__rigth{
+	border: 1px solid green;
+}
+
+/* ----------------------------- FOOTER */
+.footer{
+	border: 1px solid orange;
+}
+.footer__face{
+	border: 1px solid orange;
+}
+
+/* -------------------------------------------------- HOME */
+.home__button{
+	border: 1px solid red;
+}
+
+/* -------------------------------------------------- DETAILS */
+.detail__hero{
+	border: 1px solid red;
+}
+.detail__hero__name{
+	border: 1px solid red;
+}
+.detail__hero__tagline{
+	border: 1px solid red;
+}
+.detail__hero__brew{
+	border: 1px solid red;
+}
+.detail__hero__abv{
+	border: 1px solid red;
+}
+.detail__hero__image{
+	border: 1px solid red;
+}
+/* DETAIL */
+.detail_info{
+	border: 1px solid red;
+}
+.detail_info__description{
+	border: 1px solid red;
+}
+.detail__ingredients{
+	border: 1px solid red;
+}
+/* API */
+.detail__map{
+	border: 1px solid red;
+}
+.detail__map__title{
+	border: 1px solid red;
+}
+.detail__map__api{
+	border: 1px solid red;
+}
+/* RECOMMEND */
+.detail__map__food{
+	border: 1px solid red;
+}
+.detail__map__food__title{
+	border: 1px solid red;
+}
+.detail__map__food__desc{
+	border: 1px solid red;
+}
+
+/* -------------------------------------------------- MEDIA QUERIES */
+@media only screen and (min-device-width: 2048px){
+	.filter,
+	.header,
+	.main,
+	.tag,
+	.random,
+	.card,
+	.page,
+	/* footer, */
+	.home__button{
+		display: none;
+	}
+}
