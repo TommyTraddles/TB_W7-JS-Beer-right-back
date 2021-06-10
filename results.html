@@ -17,14 +17,14 @@
 	<aside class="filter">
 		<!--  -->
 		<div class="filter__control">
-			X
+			<button id="filter_close"> ⬅️ </button>
 		</div>
 		<!-- SEARCH  -->
-		<!-- <div class="filter__search">
+		<div class="filter__search">
 			<p>search by name </p>
-			<input type="search" name="" id="">
-			<input type="button" value="search">
-		</div> -->
+			<input type="search" name="" id="search_string" placeholder="Punk IPA...">
+			<button id="btn_search">Search</button>
+		</div>
 
 		<!-- FILTER -->
 		<div class="filter__filter">
@@ -73,15 +73,15 @@
 		</div> -->
 
 		<!-- SHOW -->
-		<!-- <div class="filter__show">
-			<label for="">Show as</label>
-			<label for="">
-				<input type="radio" name="show" id=""> Grid
+		<div class="filter__show">
+			<label for="show">Show as</label>
+			<label for="show">
+				<input type="radio" name="show" id="show_grid" checked> Grid
 			</label>
-			<label for="">
-				<input type="radio" name="show" id=""> List
+			<label for="show">
+				<input type="radio" name="show" id="show_list"> List
 			</label>
-		</div> -->
+		</div>
 
 		<!-- RESULTS -->
 		<div class="filter__results">
@@ -103,9 +103,11 @@
 
 	</aside>
 
-	<!-- ❌ HEADER -->
+	<!-- ✅ HEADER -->
 	<header class="header">
-		<div class="header__filter">🎚</div>
+		<div class="header__filter">
+			<button id="filter_open">🎚</button>
+		</div>
 		<a href="index.html">
 			<div class="header__logo">beer right back</div>
 		</a>
@@ -120,7 +122,7 @@
 	<!-- ❌ FILTER-TAGS -->
 	<section class="tag">
 		<span class="tag__title">Filtered by</span>
-		<span class="tag__clear" onclick="loadgenericGallery()">Clear all</span>
+		<span class="tag__clear">Clear all</span>
 		<div class="tag__cont">
 			<!-- JS -->
 			<div class="tag__cont_tag">4,6%- 7,5%</div>

@@ -6,6 +6,8 @@ console.log('> ...')
 // DRY variables URL
 // Variables globales
 // Show total amount of matches (not per page)
+// Pagination dont work on String search 
+// Pagination appears on 404 page
 
 // ______________________________ ✅ VARIABLES DE LA API ___________________
 
@@ -14,12 +16,13 @@ const url = 'https://api.punkapi.com/v2/beers/'
 const search = '?'
 const and = '&'
 //
+let _beer_nm = ''
 let _page_nmb = 1
 let _per_pg = 25
 let _abv_min = 0 // ___ 0.5
 let _abv_max = 100 // ___ 55
-//
 let url_to_fetch = url
+let _show_as = ''
 
 // SELECTOR
 const input_by_page = document.querySelector('#page')
@@ -32,8 +35,15 @@ const pagination = document.querySelector('.page')
 const next_page = document.querySelector('#page__rigth')
 const page_number = document.querySelector('.page__number')
 const prev_page = document.querySelector('#page__left')
-const cleat_tag = document.querySelector('.tag__cont')
+const clear_tag = document.querySelector('.tag__clear')
+const filter = document.querySelector('.filter')
+const filter_close = document.querySelector('#filter_close')
+const filter_open = document.querySelector('#filter_open')
+const filter_search = document.querySelector('#search_string')
+const button_search = document.querySelector('#btn_search')
 
+const filter_show_grid = document.querySelector('#show_grid')
+const filter_show_list = document.querySelector('#show_list')
 //
 const main_title = document.querySelector('.main__title')
 const card_cont = document.querySelector('.card__cont')
@@ -49,39 +59,50 @@ const getRandomBeer = () =>{
 	hidePagination()
 	callAPI()
 }
+
 // 🎛
 const loadgenericGallery = () =>{
 	url_to_fetch = url 
 	restartPageNumber()
 	showPagination()
+	closeFilters()
 	callAPI()
 }
 
-// 
-// ❌ Hide aside
-const openFilters = () =>{
-	console.log('Fx. openFilters')
+// 🎛
+const openFilters = () => {
+	filter.style.display = 'block'
+}
+const closeFilters = () => {
+	filter.style.display = 'none'
 }
 
-// 
-// ❌ render filters
-
-// ❌
-const textSearch = () =>{
+// 🎛
+const searchFilter = () =>{
+	_beer_nm = filter_search.value
+	closeFilters()
+	searchUrlToFetch()
+}
+const searchUrlToFetch = () =>{
+	url_to_fetch = url + search + `beer_name=${_beer_nm}`
+	callAPI(url_to_fetch)
 }
 
-// ❌ 
+// 🎛
 const submitFilters = () =>{
 	_per_pg = Number(input_by_page.value)
 	_abv_min = Number(input_abv_min.value)
 	_abv_max = Number(input_abv_max.value) ? Number(input_abv_max.value) : 100
+	_show_as = filter_show_grid.value
+
+	console.log(_show_as)
+
 	restartPageNumber()
 	showPagination()
-	urlToFetch()
+	closeFilters()
+	filterUrlToFetch()
 }
-
-// ❌
-const urlToFetch = () =>{
+const filterUrlToFetch = () =>{
 	const page_number = `page=${_page_nmb}`
 	const per_page = `per_page=${_per_pg}`
 	const abv_range = `abv_gt=${_abv_min}&abv_lt=${_abv_max}`
@@ -89,10 +110,14 @@ const urlToFetch = () =>{
 	callAPI(url_to_fetch)
 }
 
+// ❌
+// render filters
+
+
 
 // ______________________________ ✅ FETCH ________________________________
 
-// ❌
+// ✅
 const callAPI = async () => {	
 	try {
 		const response = await fetch(url_to_fetch)
@@ -102,11 +127,7 @@ const callAPI = async () => {
 			renderMatchedResults(jsonRes)
 		}
 	} catch (error) {
-			console.log(error)
-			const shell_card = document.createElement('div')
-			shell_card.className = 'card__cont__card'
-			shell_card.innerHTML =`<div class="card_cont_card_error"> ❌ </div>`
-			card_cont.appendChild(shell_card)
+		console.log(error)
 	}
 }
 
@@ -116,27 +137,34 @@ const callAPI = async () => {
 const renderGallery = async (jsonRes) =>{
 	let beer_card = ''
 	const image_fail = 'https://bit.ly/3zf0ZlK';
-	jsonRes.forEach(e =>{
-		beer_card += `
-		<div class="card__cont__card">
-			<a href="card.html?id=${e.id}" class="card__cont__card__id">
-				<div class="card__cont__card__title">${e.name}</div>
-				<div class="card__cont__card__ABV"> ABV: ${e.abv}%</div>
-				<div class="card__cont__card__botom"></div>
-				<div class="card__cont__card__image">
-					<img src="${e.image_url ? e.image_url : image_fail}" alt="">
-				</div>
-			</a>
-		</div>`
-	})
-	card_cont.innerHTML = beer_card
+	if (jsonRes.length < 1){
+		const error_state =`<div class="card_cont_card_error"> ❌ </div>`
+		card_cont.innerHTML = error_state
+		// hidePagination
+	} else {
+		jsonRes.forEach(e =>{
+			beer_card += `
+			<div class="card__cont__card">
+				<a href="card.html?id=${e.id}" class="card__cont__card__id">
+					<div class="card__cont__card__title">${e.name}</div>
+					<div class="card__cont__card__ABV"> ABV: ${e.abv}%</div>
+					<div class="card__cont__card__botom"></div>
+					<div class="card__cont__card__image">
+						<img src="${e.image_url ? e.image_url : image_fail}" alt="">
+					</div>
+				</a>
+			</div>`
+		})
+		
+		card_cont.innerHTML = beer_card
+	}
+	// showPagination()
 }
 const renderMatchedResults = async (jsonRes) => {
 	const results = jsonRes.length
 	const shell_hero = `${results} matched types of 🍺 to learn about `
 	main_title.innerHTML = shell_hero
 }
-
 // 🎛
 const hidePagination = () =>{
 	pagination.style.display = 'none'
@@ -152,7 +180,7 @@ const prevPage = () =>{
 	} else {
 		prev_page.disabled = true
 	}
-	urlToFetch()
+	filterUrlToFetch()
 }
 const nextPage = () =>{
 	const divided = 325 / _per_pg
@@ -166,17 +194,21 @@ const nextPage = () =>{
 		page_number.innerHTML = _page_nmb
 		prev_page.disabled = false
 	}
-	urlToFetch()
+	filterUrlToFetch()
 }
 const restartPageNumber = () =>{
 	_page_nmb = 1
 	page_number.innerHTML = _page_nmb
 }
 
-// 
+//
+button_search.addEventListener('click', searchFilter) 
+filter_open.addEventListener('click', openFilters)
+filter_close.addEventListener('click', closeFilters)
+clear_tag.addEventListener('click', loadgenericGallery)
 button_clear.addEventListener('click', loadgenericGallery)
 button_apply.addEventListener('click', submitFilters)
 button_random.addEventListener('click', getRandomBeer)
-loadgenericGallery()
 prev_page.addEventListener('click', prevPage)
 next_page.addEventListener('click', nextPage)
+loadgenericGallery()
