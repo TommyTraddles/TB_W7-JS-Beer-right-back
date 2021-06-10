@@ -19,6 +19,7 @@ const renderSelectedBeer = async () => {
 			const api_name = jsonRes[0].name
 			const api_tagline = jsonRes[0].tagline
 			const api_image_url = jsonRes[0].image_url
+			const api_image_url_error = 'https://cdn.pixabay.com/photo/2014/12/22/00/04/bottle-576717_960_720.png';
 			const api_abv = jsonRes[0].abv
 			// const api_ibu = jsonRes[0].ibu
 			// const api_ebc = jsonRes[0].ebc
@@ -36,7 +37,7 @@ const renderSelectedBeer = async () => {
 					<div class="detail__hero__brew">First brewed: ${api_first_brewed}</div>
 					<div class="detail__hero__abv">ABV: ${api_abv}%</div>
 					<div class="detail__hero__image">
-						<img src="${api_image_url}" alt="${api_name}"></div>
+						<img src="${api_image_url ? api_image_url : api_image_url_error}" alt="${api_name}"></div>
 				</section>
 				<section class="detail_info">
 					<div class="detail_info__description">${api_description}</div>
