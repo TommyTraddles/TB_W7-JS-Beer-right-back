@@ -8,12 +8,17 @@
 	/* font-weigth */
 }
 
+
 /* ----------------------------- GLOBAL */
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;;
+}
+a{
+	text-decoration: none;
+	color: inherit;
 }
 body{
 	background-color: black;
@@ -46,16 +51,10 @@ body{
 .filter__filter__AVB{
 	border: 1px solid red;
 }
-.filter__filter__AVB_range{
-	border: 1px solid red;
-}
 .filter__filter__AVB_slider{
 	border: 1px solid red;
 }
 .filter__filter__IBU{
-	border: 1px solid red;
-}
-.filter__filter__IBU_range{
 	border: 1px solid red;
 }
 .filter__filter__IBU_slider{
@@ -64,16 +63,10 @@ body{
 .filter__filter__EBC{
 	border: 1px solid red;
 }
-.filter__filter__EBC_range{
-	border: 1px solid red;
-}
 .filter__filter__EBC_slider{
 	border: 1px solid red;
 }
 .filter__filter__brew{
-	border: 1px solid red;
-}
-.filter__filter__brew_range{
 	border: 1px solid red;
 }
 .filter__filter__brew_slider{
@@ -154,6 +147,9 @@ body{
 .card__cont__card{
 	border: 1px solid blue;	
 }
+.card__cont__card__id{
+	border: 1px solid blue;	
+}
 .card__cont__card__ABV{
 	border: 1px solid blue;
 }
@@ -165,6 +161,9 @@ body{
 }
 .card__cont__card__image{
 	border: 1px solid blue;
+}
+.card_cont_card_error{
+	border: 1px solid red;
 }
 /* GRID & LIST */
 /* HOVER */
@@ -197,6 +196,10 @@ body{
 }
 
 /* -------------------------------------------------- DETAILS */
+
+.detail{
+
+}
 .detail__hero{
 	border: 1px solid red;
 }

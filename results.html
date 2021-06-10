@@ -15,59 +15,65 @@
 
 	<!-- ASIDE-FILTER -->
 	<aside class="filter">
-
+		<!--  -->
 		<div class="filter__control">
 			X
 		</div>
-
-		<div class="filter__search">
+		<!-- SEARCH  -->
+		<!-- <div class="filter__search">
 			<p>search by name </p>
 			<input type="search" name="" id="">
 			<input type="button" value="search">
-		</div>
+		</div> -->
 
+		<!-- FILTER -->
 		<div class="filter__filter">
 			<p>Filter your beer</p>
+
 			<div class="filter__filter__AVB">
 				<label for="">AVB</label>
-				<span class="filter__filter__AVB_range">Range</span>
-				<div class="filter__filter__AVB_slider">Slider</div>
+				<div class="filter__filter__AVB_slider">
+					<input type="number" name="avb" id="avb-min" min="0" max="60">
+					<input type="number" name="avb" id="avb-max" min="0" max="60">
+				</div>
 			</div>
 
-			<div class="filter__filter__IBU">
+			<!-- <div class="filter__filter__IBU">
 				<label for="">IBU</label>
 				<span class="filter__filter__IBU_range">Range</span>
 				<div class="filter__filter__IBU_slider">Slider</div>
-			</div>
+			</div> -->
 
-			<div class="filter__filter__EBC">
+			<!-- <div class="filter__filter__EBC">
 				<label for="">EBC</label>
 				<span class="filter__filter__EBC_range">Range</span>
 				<div class="filter__filter__EBC_slider">Slider</div>
-			</div>
+			</div> -->
 
-			<div class="filter__filter__brew">
+			<!-- <div class="filter__filter__brew">
 				<label for="">brewing dates</label>
 				<span class="filter__filter__brew_range">Range</span>
 				<div class="filter__filter__brew_slider">Slider</div>
 			</div>
-		</div>
+		</div> -->
 
-		<div class="filter__sort">
+		<!-- SORT -->
+		<!-- <div class="filter__sort">
 			<label for="">Sort by</label>
 			<select name="sort" id="sort">
 				<option value="ABV-high-low">ABV: high-low</option>
 				<option value="ABV-low-high">ABV: low-high</option>
-				<!-- <option value="IBU-high-low">IBU: high-low</option>
+				<option value="IBU-high-low">IBU: high-low</option>
 				<option value="IBU-low-high">IBU: low-high</option>
 				<option value="EBC-high-low">EBC: high-low</option>
-				<option value="EBC-low-high">EBC: low-high</option> -->
-				<!-- <option value="Brew-high-low">Brew: high-low</option>
-				<option value="Brew-low-high">Brew: low-high</option> -->
+				<option value="EBC-low-high">EBC: low-high</option>
+				<option value="Brew-high-low">Brew: high-low</option>
+				<option value="Brew-low-high">Brew: low-high</option>
 			</select>
-		</div>
+		</div> -->
 
-		<div class="filter__show">
+		<!-- SHOW -->
+		<!-- <div class="filter__show">
 			<label for="">Show as</label>
 			<label for="">
 				<input type="radio" name="show" id=""> Grid
@@ -75,11 +81,13 @@
 			<label for="">
 				<input type="radio" name="show" id=""> List
 			</label>
-		</div>
+		</div> -->
 
+		<!-- RESULTS -->
 		<div class="filter__results">
 			<label for="">Results by page</label>
-			<select name="sort" id="sort">
+			<select name="page" id="page">
+				<option value="5">5</option>
 				<option value="10">10</option>
 				<option value="25">25</option>
 				<option value="50">50</option>
@@ -87,9 +95,10 @@
 			</select>
 		</div>
 
+		<!-- BUTTONS -->
 		<div class="filter__buttons">
-			<input type="button" value="clear">
-			<input type="button" value="apply">
+			<input type="button" value="clear" id="btn_clear">
+			<input type="button" value="apply" id="btn_apply">
 		</div>
 
 	</aside>
@@ -97,14 +106,15 @@
 	<!-- HEADER -->
 	<header class="header">
 		<div class="header__filter">🎚</div>
-		<div class="header__logo">beer right now</div>
+		<a href="index.html">
+			<div class="header__logo">beer right back</div>
+		</a>
 		<div class="header__user">🤖</div>
 	</header>
 
 	<!-- HERO -->
-	<main class="main">
-		<!-- JS -->
-		<p class="main__title">${299} types of 🍺to learn about </p>
+	<main class="hero">
+		<div class="main__title"> None	</div>
 	</main>
 
 	<!-- FILTER-TAGS -->
@@ -119,7 +129,7 @@
 
 	<!-- RANDOM -->
 	<section class="random">
-		<a href="card.html" target="_blank" rel="">
+		<a href="card.html" rel="">
 			<input type="button" value="Get one random beer">
 		</a>
 	</section>
@@ -127,14 +137,6 @@
 	<!-- CARD -->
 	<section class="card">
 		<div class="card__cont">
-			<!-- JS -->
-			<div class="card__cont__card">
-				<div class="card__cont__card__ABV">6.0%</div>
-				<div class="card__cont__card__title">Punk IPA 2007 - 2010</div>
-				<div class="card__cont__card__botom"></div>
-				<div class="card__cont__card__image"></div>
-			</div>
-
 		</div>
 	</section>
 

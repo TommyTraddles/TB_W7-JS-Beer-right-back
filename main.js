@@ -1,129 +1,228 @@
 console.log('> ...')
 
 
-// ------------------------------ URL 🔥🔥🔥
-
-// get api
+// ✅ VARIABLES DE LA API
 const url = 'https://api.punkapi.com/v2/beers/'
 const search = '?'
 const and = '&'
-
-// random
-const _random = 'random' // ____ 325
-
-// page
-let _page_nmb = 2
-let _per_pg = 10
-const page_number = `page=${_page_nmb}`
-const per_page = `per_page=${_per_pg}`
-
-// filters
-let _abv_desde = 0 // ___ 0.5
-let _abv_hasta = 4.5 // ___ 55
-const abv_range = `abv_gt=${_abv_desde}&abv_lt=${_abv_hasta}`
-//
-let _ibu_desde = 200 // ____ 7
-let _ibu_hasta = 260 // ____ 200
-const ibu_range = `ibu_gt=${_ibu_desde}&ibu_lt=${_ibu_hasta}`
-//
-let _ebc_desde = 50 // ____ 2
-let _ebc_hasta = 55 // ____ 600
-const ebc_range = `ebc_gt=${_ebc_desde}&ebc_lt=${_ebc_hasta}`
-//
-let _brewed_desde = '10-2010' // afterest___05-2016 - automático
-let _brewed_hasta = '12-2010' // beforest___05-2007 - automático
-const brewed_range = `brewed_before=${_brewed_hasta}&brewed_after=${_brewed_desde}`
-
-// search
-let _beer_nm = 'punk_ipa' // add underscore to search to work
-const beer_name = `beer_name=${_beer_nm}`
-//
-let _ing_hops = 'Chinook'
-const hops = `hops=${_ing_hops}`
-//
-let _ing_malt = 'Propino Pale Malt for kettle souring'
-const malt = `malt=${_ing_malt}`
-//
-let _ing_yeast = 'Wyeast 1056 - American Ale'
-const yeast = `yeast=${_ing_yeast}`
-//
-let _ing_food = 'Warm blackberry pie'
-const food = `food=${_ing_food}`
-
-// TEST 🔥🔥🔥
-const url_to_fetch = url + _random
-// const url_to_fetch = url + search + abv_range + and + per_page
-// const url_to_fetch = url + search + beer_name + and + per_page
+let _page_nmb = 1
+let _per_pg = 5
+let _abv_min = 0 // ___ 0.5
+let _abv_max = 4.5 // ___ 55
 
 
-// ------------------------------ GET INPUT 🔥🔥🔥
-// Random ->
-// filter -> selector
-// search -> input
-// Show -> per_page, page_number
-// sort by -> a,b or b,a
-// paginacion 
-// send as values for HTML
+// ✅ INPUT SELECTOR
+const input_by_page = document.querySelector('#page')
+const input_abv_min = document.querySelector('#avb-min')
+const input_abv_max = document.querySelector('#avb-max')
+const button_clear = document.querySelector('#btn_clear')
+const button_apply = document.querySelector('#btn_apply')
 
-// RENDER INPUT
+
+// ✅ FILTERS CLEAR
+const clearFilters = () =>{
+	console.log('Fx. clearFilters')
+}
+
+// ✅ FILTERS SUBMIT
+const applyFilters = () =>{
+	console.log('Fx. applyFilters')
+	// Filtros
+	_per_pg = Number(input_by_page.value)
+	_abv_min = Number(input_abv_min.value)
+	_abv_max = Number(input_abv_max.value)
+
+	// deleteRenderedGallery()
+	// newQuery()
+	// callBeerAPI()
+}
+
+
+button_clear.addEventListener('click', clearFilters)
+button_apply.addEventListener('click', applyFilters)
+
+
+
+
 // add filters
 // delete filters
 // reset filters
 
+// ✅ API ENDPOINTS to fnction
 
-// ------------------------------ CALL API 🔥🔥🔥
-const beerApi = async () => {	
+// Pages
+const page_number = `page=${_page_nmb}`
+const per_page = `per_page=${_per_pg}`
+// filters
+const abv_range = `abv_gt=${_abv_min}&abv_lt=${_abv_max}`
+// test
+const url_to_fetch = url + search + abv_range + and + per_page
+
+
+
+
+// ------------------------------ FUNCTIONS 🔥🔥🔥
+
+const main_title = document.querySelector('.main__title')
+const card = document.querySelector('.card__cont')
+const card_container = document.querySelector('.card__cont__card')
+
+// ✅
+const callBeerAPI = async () => {	
+	console.log('Fx. callBeerAPI')
 	try {
 		const response = await fetch(url_to_fetch)
 		if(response.ok){
 			const jsonRes = await response.json()
-			console.log('> Fx. BeerApi')
+			renderGalleryByFilter(jsonRes)
+			totalRenderResults(jsonRes)
 			console.log(jsonRes)
-			return renderCard(jsonRes)
 		}
 	} catch (error) {
-		console.log(error)
+			console.log(error)
+			// ❌
+			const shell_card = document.createElement('div')
+			shell_card.className = 'card__cont__card'
+			shell_card.innerHTML =`<div class="card_cont_card_error"> ❌ </div>`
+			card.appendChild(shell_card)
 	}
 }
-beerApi()
+callBeerAPI()
 
+// ✅
+const totalRenderResults = async (jsonRes) => {
+	console.log('Fx. totalRenderResults')
+	const results = jsonRes.length
+	const shell_hero = `${results} filtered types of 🍺 to learn about `
+	main_title.innerHTML = shell_hero
+}
 
-// ------------------------------ RENDER CARD 🔥🔥🔥
-const renderCard = async (jsonRes) =>{
-
-	console.log('> Fx. RenderCard')
+// ✅
+const renderGalleryByFilter = async (jsonRes) =>{
+	console.log('Fx. renderGalleryByFilter')
 	for (i in jsonRes){
 		const api_name = jsonRes[i].name
-		// const api_tagline = jsonRes[i].tagline
-		// const api_image_url = jsonRes[i].image_url
-		// const api_abv = jsonRes[i].abv
-		// const api_ibu = jsonRes[i].ibu
-		// const api_ebc = jsonRes[i].ebc
-		// const api_description = jsonRes[i].description
-		// const api_food_pairing = jsonRes[i].food_pairing[i]
-		// const api_ingredients = jsonRes[i].ingredients
-		// const api_first_brewed = jsonRes[i].first_brewed
+		const api_abv = jsonRes[i].abv
+		const api_image_url = jsonRes[i].image_url
+		const api_id = jsonRes[i].id
 
-		console.log(api_name)
+		const shell_card = document.createElement('div')
+		shell_card.className = 'card__cont__card'
+		shell_card.innerHTML =`
+			<a href="card.html?id=${api_id}" class="card__cont__card__id">
+				<div class="card__cont__card__title">${api_name}</div>
+				<div class="card__cont__card__ABV"> ABV: ${api_abv}%</div>
+				<div class="card__cont__card__botom"></div>
+				<div class="card__cont__card__image">
+					<img src="${api_image_url}" alt="">
+				</div>
+			</a>`
+		card.appendChild(shell_card)
 	}
-
-	return renderPage(jsonRes)
 }
 
-// BLANK STATE
 
-
-// ------------------------------ RENDER PAGE DESCRIPTION 🔥🔥🔥
-const renderPage = async (jsonRes) =>{
-	console.log('> Fx. RenderPage')
-	// console.log(jsonRes[0])
+// ❌
+const deleteRenderedGallery = () =>{
+	console.log('fx. deleteRenderedGallery')
+	card.removeChild(card_container)
 }
 
-// 404
 
 
-// TRIGGER CALL MAP
 
-// CALL MAP API
 
-// RENDER MAP
+
+
+
+// ❌
+const pagination = async () =>{
+	console.log('Fx. pagination')
+	// paginacion = array.length / result_page
+}
+
+
+
+
+
+// ❌
+const openCloseAsideFilter = () =>{
+	console.log('Fx. openCloseAsideFilter')
+}
+
+
+
+
+/*
+
+0) FILTERS 🔥
+
+OPEN -CLOSE ASIDE BAR
+	?
+
+FILTERS
+	Form receive data
+
+
+
+1) CARDSSSS 🔥
+
+
+EXECUTE SEARCH
+	submit(onclick) -> obtiene valores de los formularios
+
+API ENDPOINTS
+	const input = input.value -> almacena las respuestas en las var de rango
+	const url_to_fetch = url + input
+
+RENDER FILTER TAGS
+	const tag_value = input.value
+	genera un badge con los parámetros recibidos
+
+
+
+CALL API
+	Ejecuta la llamada con url_to_fetch
+
+
+RENDER CALL -> Error
+	INVALID-CARD-SHELL
+
+
+RENDER CALL -> Success Cards
+	Pasa parámetros obtenidos a la fx CARD-SHELL
+	For (i of list)
+	append.CARD-SHELL
+
+CARD-SHELL
+	Genera cada card con los parámetros recibidos
+	Genera ID al hacer clic que se escuchará OnClick
+
+
+2) OOOOOOOPEN CARD 🔥
+
+EXECUTE CLICK
+	card(onclock) -> obtiene ID
+
+API ENDPOINT
+	const input_id = card_ID
+	const api_to_fetch = url + input_id
+
+CALL API
+	Es necesario hacer un ASYNC?
+
+RENDER DETAIL-SHELL
+	Pasa parámetros a la funcion DETAIL-SHELL
+	append.DETAIL-SHELL
+
+CALL MAP API
+
+RENDER MAP API
+
+ADD RANDOM POINTS 
+
+
+*/
+
+
+// CALL 
