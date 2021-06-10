@@ -33,8 +33,8 @@
 			<div class="filter__filter__AVB">
 				<label for="">AVB</label>
 				<div class="filter__filter__AVB_slider">
-					<input type="number" name="avb" id="avb-min" min="0" max="60">
-					<input type="number" name="avb" id="avb-max" min="0" max="60">
+					<input type="number" name="avb" id="avb-min" min="0" max="60" placeholder="0">
+					<input type="number" name="avb" id="avb-max" min="0" max="60" placeholder="60">
 				</div>
 			</div>
 
@@ -89,7 +89,7 @@
 			<select name="page" id="page">
 				<option value="5">5</option>
 				<option value="10">10</option>
-				<option value="25">25</option>
+				<option value="25" selected="selected">25</option>
 				<option value="50">50</option>
 				<option value="75">75</option>
 			</select>
@@ -97,8 +97,8 @@
 
 		<!-- BUTTONS -->
 		<div class="filter__buttons">
-			<input type="button" value="clear" id="btn_clear">
-			<input type="button" value="apply" id="btn_apply">
+			<button id="btn_clear"> clear </button>
+			<button id="btn_apply"> apply </button>
 		</div>
 
 	</aside>
@@ -120,7 +120,7 @@
 	<!-- ❌ FILTER-TAGS -->
 	<section class="tag">
 		<span class="tag__title">Filtered by</span>
-		<span class="tag__clear">Clear all</span>
+		<span class="tag__clear" onclick="loadgenericGallery()">Clear all</span>
 		<div class="tag__cont">
 			<!-- JS -->
 			<div class="tag__cont_tag">4,6%- 7,5%</div>
@@ -129,7 +129,7 @@
 
 	<!-- ✅ RANDOM -->
 	<section class="random">
-		<input type="button" value="Get one random beer" id="btn_random">
+		<button id="btn_random"> Get one random beer </button>
 	</section>
 
 	<!-- ✅ CARD -->
@@ -138,11 +138,11 @@
 		</div>
 	</section>
 
-	<!-- ❌ PAGINATION -->
+	<!-- ✅ PAGINATION -->
 	<section class="page">
-		<span class="page__left"> Left </span>
-		<span class="page__number"> 32 </span>
-		<span class="page__rigth"> Rigth</span>
+		<button id="page__left"> ← </button>
+		<span class="page__number"> 1 </span>
+		<button id="page__rigth"> → </button>
 	</section>
 
 	<!-- ❌ FOOTER -->

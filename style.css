@@ -19,6 +19,10 @@
 a{
 	text-decoration: none;
 	color: inherit;
+	cursor: pointer;
+}
+button{
+	cursor: pointer;
 }
 img{
 	height: 100px;
@@ -126,6 +130,7 @@ body{
 }
 .tag__clear{
 	border: 1px solid orange;
+	cursor: pointer;
 }
 .tag__cont{
 	border: 1px solid orange;
