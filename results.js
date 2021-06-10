@@ -1,14 +1,5 @@
 console.log('> ...')
 
-// ❌
-// Blank state	(catch_error)
-// Error image (api_image_url_error)
-// DRY variables URL
-// Variables globales
-// Show total amount of matches (not per page)
-// Pagination dont work on String search 
-// Pagination appears on 404 page
-
 // ______________________________ ✅ VARIABLES DE LA API ___________________
 
 // API
@@ -19,8 +10,8 @@ const and = '&'
 let _beer_nm = ''
 let _page_nmb = 1
 let _per_pg = 25
-let _abv_min = 0 // ___ 0.5
-let _abv_max = 100 // ___ 55
+let _abv_min = 0
+let _abv_max = 100 
 let url_to_fetch = url
 let _show_as = ''
 let _sort_by = 'name'
@@ -33,18 +24,26 @@ const input_abv_max = document.querySelector('#avb-max')
 const button_clear = document.querySelector('#btn_clear')
 const button_apply = document.querySelector('#btn_apply')
 const button_random = document.querySelector('#btn_random')
-const pagination = document.querySelector('.page')
+
+const header_section = document.querySelector('.header')
+const hero_section = document.querySelector('.hero')
+const tag_section = document.querySelector('.tag')
+const random_section = document.querySelector('.random')
+const card_section = document.querySelector('.card')
+const footer_section = document.querySelector('.footer')
+
+const pagination_section = document.querySelector('.page')
 const next_page = document.querySelector('#page__rigth')
 const page_number = document.querySelector('.page__number')
 const prev_page = document.querySelector('#page__left')
 const clear_tag = document.querySelector('.tag__clear')
-const filter = document.querySelector('.filter')
+
+const filter_section = document.querySelector('.filter')
 const filter_close = document.querySelector('#filter_close')
 const filter_open = document.querySelector('#filter_open')
 const filter_search = document.querySelector('#search_string')
 const button_search = document.querySelector('#btn_search')
 const filter_sort = document.querySelector('#sort')
-
 const filter_show_grid = document.querySelector('#show_grid')
 const filter_show_list = document.querySelector('#show_list')
 //
@@ -55,15 +54,14 @@ const card_cont_card = document.querySelectorAll('.card__cont__card')
 
 // ______________________________ ✅ INPUTS ________________________________
 
-// 🎛
+// ✅
 const getRandomBeer = () =>{
 	url_to_fetch = url + 'random'
 	restartPageNumber()
 	hidePagination()
 	callAPI()
 }
-
-// 🎛
+// ✅
 const loadgenericGallery = () =>{
 	url_to_fetch = url 
 	restartPageNumber()
@@ -71,27 +69,42 @@ const loadgenericGallery = () =>{
 	closeFilters()
 	callAPI()
 }
-
-// 🎛
+// ✅
 const openFilters = () => {
-	filter.style.display = 'block'
+	filter_section.style.display = 'block'
+	//
+	header_section.style.display = 'none'
+	hero_section.style.display = 'none'
+	tag_section.style.display = 'none'
+	random_section.style.display = 'none'
+	pagination_section.style.display = 'none'
+	card_section.style.display = 'none'
+	footer_section.style.display = 'none'
 }
+// ✅
 const closeFilters = () => {
-	filter.style.display = 'none'
+	filter_section.style.display = 'none'
+	//
+	header_section.style.display = 'block'
+	hero_section.style.display = 'block'
+	tag_section.style.display = 'block'
+	random_section.style.display = 'block'
+	pagination_section.style.display = 'block'
+	card_section.style.display = 'block'
+	footer_section.style.display = 'block'
 }
-
-// 🎛
+// ✅
 const searchFilter = () =>{
 	_beer_nm = filter_search.value
 	closeFilters()
 	searchUrlToFetch()
 }
+// ✅
 const searchUrlToFetch = () =>{
 	url_to_fetch = url + search + `beer_name=${_beer_nm}`
 	callAPI(url_to_fetch)
 }
-
-// 🎛
+// ✅
 const submitFilters = () =>{
 	console.log('fx. submitFilters')
 	_per_pg = Number(input_by_page.value)
@@ -106,6 +119,7 @@ const submitFilters = () =>{
 	closeFilters()
 	filterUrlToFetch()
 }
+// ✅
 const filterUrlToFetch = () =>{
 	const page_number = `page=${_page_nmb}`
 	const per_page = `per_page=${_per_pg}`
@@ -124,12 +138,13 @@ const changeGalleryView = () =>{
 	}
 }
 
-// ❌ NO SE HAN CREADO
-// render filters
+// ❌ render filters in results
 
 
-// ❌ NO SE HA CREADO
-// Sticky header
+// ❌ Sticky header
+
+
+// ❌ FAVORITOS -- ID, sección única -- 
 
 
 // ______________________________ ✅ FETCH ________________________________
@@ -146,7 +161,6 @@ const callAPI = async () => {
 		console.log(error)
 	}
 }
-
 // ❌ FALLA EL SORT
 const sortResults = (jsonRes) =>{
 	console.log('Fx. sortResults')
@@ -166,7 +180,7 @@ const sortResults = (jsonRes) =>{
 
 // ______________________________ ✅ RENDER ________________________________
 
-// ❌ ESTILOS ERROR
+// ❌ ESTILOS ERROR PENDIENTES - IMAGENES DE ERROR - 
 const renderGallery = async (jsonRes) =>{
 	let beer_card = ''
 	const image_fail = 'https://bit.ly/3zf0ZlK';
@@ -192,18 +206,21 @@ const renderGallery = async (jsonRes) =>{
 	}
 	// showPagination()
 }
+// ❌ Show total amount of matches (not per page)
 const renderMatchedResults = async (jsonRes) => {
 	const results = jsonRes.length
 	const shell_hero = `${results} matched types of 🍺 to learn about `
 	main_title.innerHTML = shell_hero
 }
-// 🎛
+// ❌ Pagination dont work on String search - Pagination appears on 404 page
 const hidePagination = () =>{
-	pagination.style.display = 'none'
+	pagination_section.style.display = 'none'
 }
+// ✅
 const showPagination = () =>{
-	pagination.style.display = 'block'
+	pagination_section.style.display = 'block'
 }
+// ✅
 const prevPage = () =>{
 	if(_page_nmb > 1){
 		_page_nmb--
@@ -214,6 +231,7 @@ const prevPage = () =>{
 	}
 	filterUrlToFetch()
 }
+// ✅
 const nextPage = () =>{
 	const divided = 325 / _per_pg
 	const validate = Number.isInteger(divided)
@@ -228,6 +246,7 @@ const nextPage = () =>{
 	}
 	filterUrlToFetch()
 }
+// ✅
 const restartPageNumber = () =>{
 	_page_nmb = 1
 	page_number.innerHTML = _page_nmb

@@ -18,7 +18,7 @@ const detail = document.querySelector('.detail')
 
 // ______________________________ ✅ FETCH ________________________________
 
-//
+//✅
 const callBeerAPI = async () => {
 	try {
 		const response = await fetch(url_to_fetch)
@@ -32,6 +32,8 @@ const callBeerAPI = async () => {
 }
 
 // ______________________________ ✅ RENDER ________________________________
+
+// ✅
 const renderBeer = (jsonRes) =>{
 	let selected_beer = ''
 	const image_fail = 'https://bit.ly/3zf0ZlK';
