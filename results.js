@@ -23,6 +23,8 @@ let _abv_min = 0 // ___ 0.5
 let _abv_max = 100 // ___ 55
 let url_to_fetch = url
 let _show_as = ''
+let _sort_by = 'name'
+let _sort_order = true
 
 // SELECTOR
 const input_by_page = document.querySelector('#page')
@@ -41,6 +43,7 @@ const filter_close = document.querySelector('#filter_close')
 const filter_open = document.querySelector('#filter_open')
 const filter_search = document.querySelector('#search_string')
 const button_search = document.querySelector('#btn_search')
+const filter_sort = document.querySelector('#sort')
 
 const filter_show_grid = document.querySelector('#show_grid')
 const filter_show_list = document.querySelector('#show_list')
@@ -90,13 +93,14 @@ const searchUrlToFetch = () =>{
 
 // 🎛
 const submitFilters = () =>{
+	console.log('fx. submitFilters')
 	_per_pg = Number(input_by_page.value)
 	_abv_min = Number(input_abv_min.value)
 	_abv_max = Number(input_abv_max.value) ? Number(input_abv_max.value) : 100
-	_show_as = filter_show_grid.value
-
-	console.log(_show_as)
-
+	_show_as = filter_show_grid.checked ? filter_show_grid.id : filter_show_list.id
+	_sort_by = filter_sort.value[0] === 'A' ? 'abv' : 'name'
+	_sort_order = filter_sort.value[2] === 'L'
+	changeGalleryView()
 	restartPageNumber()
 	showPagination()
 	closeFilters()
@@ -110,9 +114,22 @@ const filterUrlToFetch = () =>{
 	callAPI(url_to_fetch)
 }
 
-// ❌
+// ❌ CREAR ESTILOS Y MODIFICARLOS
+const changeGalleryView = () =>{
+	console.log('fx. changeGalleryView')
+	if(_show_as === 'show_grid'){
+		console.log('show grid')
+	} else {
+		console.log('show list')
+	}
+}
+
+// ❌ NO SE HAN CREADO
 // render filters
 
+
+// ❌ NO SE HA CREADO
+// Sticky header
 
 
 // ______________________________ ✅ FETCH ________________________________
@@ -123,17 +140,33 @@ const callAPI = async () => {
 		const response = await fetch(url_to_fetch)
 		if(response.ok){
 			const jsonRes = await response.json()
-			renderGallery(jsonRes)
-			renderMatchedResults(jsonRes)
+			sortResults(jsonRes)
 		}
 	} catch (error) {
 		console.log(error)
 	}
 }
 
+// ❌ FALLA EL SORT
+const sortResults = (jsonRes) =>{
+	console.log('Fx. sortResults')
+	console.log(_sort_by)
+	console.log(_sort_order)
+	// jsonRes.sort((a,b) =>{
+	// 	if(_sort_order){
+	// 		(a[_sort_by] > b[_sort_by]) ? 1 : ((a[_sort_by] < b[_sort_by]) ? -1 : 0)
+	// 	} else {
+	// 		(b[_sort_by] > a[_sort_by]) ? 1 : ((b[_sort_by] < a[_sort_by]) ? -1 : 0)
+	// 	}
+	// })
+	renderGallery(jsonRes)
+	renderMatchedResults(jsonRes)
+}
+
+
 // ______________________________ ✅ RENDER ________________________________
 
-// ✅
+// ❌ ESTILOS ERROR
 const renderGallery = async (jsonRes) =>{
 	let beer_card = ''
 	const image_fail = 'https://bit.ly/3zf0ZlK';
@@ -155,7 +188,6 @@ const renderGallery = async (jsonRes) =>{
 				</a>
 			</div>`
 		})
-		
 		card_cont.innerHTML = beer_card
 	}
 	// showPagination()
