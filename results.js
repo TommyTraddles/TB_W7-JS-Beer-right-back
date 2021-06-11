@@ -6,7 +6,7 @@ console.log('> ...')
 const url = 'https://api.punkapi.com/v2/beers/'
 const search = '?'
 const and = '&'
-//
+// API VAR
 let _beer_nm = ''
 let _page_nmb = 1
 let _per_pg = 25
@@ -58,21 +58,18 @@ const card_cont_card = document.querySelectorAll('.card__cont__card')
 const getRandomBeer = () =>{
 	url_to_fetch = url + 'random'
 	restartPageNumber()
-	hidePagination()
 	callAPI()
 }
 // ✅
 const loadgenericGallery = () =>{
 	url_to_fetch = url 
 	restartPageNumber()
-	showPagination()
 	closeFilters()
 	callAPI()
 }
 // ✅
 const openFilters = () => {
 	filter_section.style.display = 'block'
-	//
 	header_section.style.display = 'none'
 	hero_section.style.display = 'none'
 	tag_section.style.display = 'none'
@@ -84,7 +81,6 @@ const openFilters = () => {
 // ✅
 const closeFilters = () => {
 	filter_section.style.display = 'none'
-	//
 	header_section.style.display = 'block'
 	hero_section.style.display = 'block'
 	tag_section.style.display = 'block'
@@ -115,7 +111,6 @@ const submitFilters = () =>{
 	_sort_order = filter_sort.value[2] === 'L'
 	changeGalleryView()
 	restartPageNumber()
-	showPagination()
 	closeFilters()
 	filterUrlToFetch()
 }
@@ -128,7 +123,7 @@ const filterUrlToFetch = () =>{
 	callAPI(url_to_fetch)
 }
 
-// ❌ CREAR ESTILOS Y MODIFICARLOS
+// ❌ Crear estilos y modificarlos
 const changeGalleryView = () =>{
 	console.log('fx. changeGalleryView')
 	if(_show_as === 'show_grid'){
@@ -161,7 +156,7 @@ const callAPI = async () => {
 		console.log(error)
 	}
 }
-// ❌ FALLA EL SORT
+// ❌ Falla sort
 const sortResults = (jsonRes) =>{
 	console.log('Fx. sortResults')
 	console.log(_sort_by)
@@ -180,14 +175,13 @@ const sortResults = (jsonRes) =>{
 
 // ______________________________ ✅ RENDER ________________________________
 
-// ❌ ESTILOS ERROR PENDIENTES - IMAGENES DE ERROR - 
+// ❌ Crear estilo BLANK + imagen de error
 const renderGallery = async (jsonRes) =>{
 	let beer_card = ''
 	const image_fail = 'https://bit.ly/3zf0ZlK';
 	if (jsonRes.length < 1){
 		const error_state =`<div class="card_cont_card_error"> ❌ </div>`
 		card_cont.innerHTML = error_state
-		// hidePagination
 	} else {
 		jsonRes.forEach(e =>{
 			beer_card += `
@@ -204,46 +198,28 @@ const renderGallery = async (jsonRes) =>{
 		})
 		card_cont.innerHTML = beer_card
 	}
-	// showPagination()
+	switchPageVisualization(jsonRes)
 }
 // ❌ Show total amount of matches (not per page)
 const renderMatchedResults = async (jsonRes) => {
-	const results = jsonRes.length
-	const shell_hero = `${results} matched types of 🍺 to learn about `
+	const shell_hero = `${jsonRes.length} matched types of 🍺 to learn about `
 	main_title.innerHTML = shell_hero
 }
-// ❌ Pagination dont work on String search - Pagination appears on 404 page
-const hidePagination = () =>{
-	pagination_section.style.display = 'none'
-}
 // ✅
-const showPagination = () =>{
-	pagination_section.style.display = 'block'
+const switchPageVisualization = (jsonRes) => {
+	_page_nmb === 1 ? prev_page.disabled = true : prev_page.disabled = false
+	jsonRes.length < _per_pg ? next_page.disabled = true : next_page.disabled = false
 }
 // ✅
 const prevPage = () =>{
-	if(_page_nmb > 1){
-		_page_nmb--
-		page_number.innerHTML = _page_nmb
-		next_page.disabled = false
-	} else {
-		prev_page.disabled = true
-	}
+	_page_nmb--
+	page_number.innerHTML = _page_nmb
 	filterUrlToFetch()
 }
 // ✅
 const nextPage = () =>{
-	const divided = 325 / _per_pg
-	const validate = Number.isInteger(divided)
-	if (validate && _page_nmb === divided - 1){
-		next_page.disabled = true
-	} if ((!validate && _page_nmb >= divided)){
-		next_page.disabled = true
-	} else {
-		_page_nmb++
-		page_number.innerHTML = _page_nmb
-		prev_page.disabled = false
-	}
+	_page_nmb++
+	page_number.innerHTML = _page_nmb
 	filterUrlToFetch()
 }
 // ✅
@@ -251,6 +227,7 @@ const restartPageNumber = () =>{
 	_page_nmb = 1
 	page_number.innerHTML = _page_nmb
 }
+
 
 //
 button_search.addEventListener('click', searchFilter) 
