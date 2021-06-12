@@ -13,7 +13,7 @@ let _per_pg = 25
 let _abv_min = 0
 let _abv_max = 100 
 let url_to_fetch = url
-let _show_as = ''
+let _show_as = 'show_grid'
 let _sort_by = 'default'
 let _sort_order = true
 
@@ -46,6 +46,10 @@ const random_section = document.querySelector('.random')
 const card_section = document.querySelector('.card')
 const card_cont = document.querySelector('.card__cont')
 const card_cont_card = document.querySelectorAll('.card__cont__card')
+const card_cont_card_title = document.querySelectorAll('.card__cont__card__title')
+const card_cont_card_abv = document.querySelectorAll('.card__cont__card__ABV')
+const card_cont_card_botom = document.querySelectorAll('.card__cont__card__botom')
+const card_cont_card_image = document.querySelectorAll('.card__cont__card__image')
 
 const pagination_section = document.querySelector('.page')
 const next_page = document.querySelector('#page__rigth')
@@ -67,6 +71,7 @@ const getRandomBeer = () =>{
 const loadGenericGallery = () =>{
 	url_to_fetch = url
 	_sort_by = 'default'
+	_show_as = 'show_grid'
 	tag_section.style.display = 'none'
 	restartPageNumber()
 	closeFilters()
@@ -116,7 +121,6 @@ const submitFilters = () =>{
 	_sort_order = input_sort.value[2] === 'L'
 	tag_section.style.display = 'block'
 	renderSelectedFilters()
-	changeGalleryView()
 	restartPageNumber()
 	closeFilters()
 	filterUrlToFetch()
@@ -129,21 +133,10 @@ const filterUrlToFetch = () =>{
 	url_to_fetch = url + search + abv_range + and + per_page + and + page_number
 	callAPI(url_to_fetch)
 }
-// ❌ Crear estilos y modificarlos
-const changeGalleryView = () =>{
-	console.log('fx. changeGalleryView')
-	if(_show_as === 'show_grid'){
-		// console.log('show grid')
-	} else {
-		// console.log('show list')
-	}
-}
 // ✅
 const stickyHeader = () =>{
 	header_section.classList.toggle('.header_sticky', window.scrollY > 0);
 }
-// ❌ FAVORITOS -- ID, sección única -- 
-
 
 // ______________________________ ✅ FETCH ________________________________
 
@@ -189,18 +182,19 @@ const sortResults = (jsonRes) =>{
 const renderGallery = async (jsonRes) =>{
 	let beer_card = ''
 	const image_fail = 'https://bit.ly/3zf0ZlK';
+	const show_validate = _show_as === 'show_grid'
 	if (jsonRes.length < 1){
 		const error_state =`<div class="card_cont_card_error"> No luck this time </div>`
 		card_cont.innerHTML = error_state
 	} else {
 		jsonRes.forEach(e =>{
 			beer_card += `
-			<div class="card__cont__card">
+			<div class="${show_validate ? 'card__cont__card' : 'card__cont__card-list'}>
 				<a href="card.html?id=${e.id}" class="card__cont__card__id">
-					<div class="card__cont__card__title">${e.name}</div>
-					<div class="card__cont__card__ABV"> ABV: ${e.abv}%</div>
-					<div class="card__cont__card__botom"></div>
-					<div class="card__cont__card__image">
+					<div class="${show_validate ? 'card__cont__card__title' : 'card__cont__card-list__title'}">${e.name}</div>
+					<div class="${show_validate ? 'card__cont__card__ABV' : 'card__cont__card-list__ABV'}"> ABV: ${e.abv}%</div>
+					<div class="${show_validate ? 'card__cont__card__botom' : 'card__cont__card-list__botom'}"></div>
+					<div class="${show_validate ? 'card__cont__card__image' : 'card__cont__card-list__image'}">
 						<img src="${e.image_url ? e.image_url : image_fail}" alt="">
 					</div>
 				</a>

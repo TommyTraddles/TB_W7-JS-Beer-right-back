@@ -194,6 +194,32 @@ body{
 .card_cont_card_error{
 	border: 1px solid red;
 }
+/* LIST */
+.card__cont__card-list{
+	border: 1px solid red;
+	background-color: orange;
+}
+.card__cont__card-list__id{
+	border: 1px solid red;
+	background-color: orange;
+}
+.card__cont__card-list__ABV{
+	border: 1px solid red;
+	background-color: orange;
+}
+.card__cont__card-list__title{
+	border: 1px solid red;
+	background-color: orange;
+}
+.card__cont__card-list__botom{
+	border: 1px solid red;
+	background-color: orange;
+}
+.card__cont__card-list__image{
+	border: 1px solid red;
+	background-color: orange;
+}
+
 /* GRID & LIST */
 /* HOVER */
 
