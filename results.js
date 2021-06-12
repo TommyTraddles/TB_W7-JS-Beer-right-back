@@ -18,38 +18,40 @@ let _sort_by = 'default'
 let _sort_order = true
 
 // SELECTOR
-const header_section = document.querySelector('.header')
-const hero_section = document.querySelector('.hero')
-const tag_section = document.querySelector('.tag')
-const random_section = document.querySelector('.random')
-const card_section = document.querySelector('.card')
-const footer_section = document.querySelector('.footer')
-
+const filter_section = document.querySelector('.filter')
+const filter_close = document.querySelector('#filter_close')
+const filter_open = document.querySelector('#filter_open')
+const filter_search = document.querySelector('#search_string')
 const input_by_page = document.querySelector('#page')
 const input_abv_min = document.querySelector('#avb-min')
 const input_abv_max = document.querySelector('#avb-max')
+const input_sort = document.querySelector('#sort')
+const input_show_grid = document.querySelector('#show_grid')
+const input_show_list = document.querySelector('#show_list')
+const button_search = document.querySelector('#btn_search')
 const button_apply = document.querySelector('#btn_apply')
 const button_random = document.querySelector('#btn_random')
 const button_clear = document.querySelector('#btn_clear')
+
+const tag_section = document.querySelector('.tag')
 const clear_tag = document.querySelector('.tag__clear')
+const tag_container = document.querySelector('.tag__cont')
+
+const header_section = document.querySelector('.header')
+const hero_section = document.querySelector('.hero')
+const main_title = document.querySelector('.main__title')
+
+const random_section = document.querySelector('.random')
+
+const card_section = document.querySelector('.card')
+const card_cont = document.querySelector('.card__cont')
+const card_cont_card = document.querySelectorAll('.card__cont__card')
 
 const pagination_section = document.querySelector('.page')
 const next_page = document.querySelector('#page__rigth')
 const page_number = document.querySelector('.page__number')
 const prev_page = document.querySelector('#page__left')
-
-const filter_section = document.querySelector('.filter')
-const filter_close = document.querySelector('#filter_close')
-const filter_open = document.querySelector('#filter_open')
-const filter_search = document.querySelector('#search_string')
-const filter_sort = document.querySelector('#sort')
-const filter_show_grid = document.querySelector('#show_grid')
-const filter_show_list = document.querySelector('#show_list')
-const button_search = document.querySelector('#btn_search')
-
-const main_title = document.querySelector('.main__title')
-const card_cont = document.querySelector('.card__cont')
-const card_cont_card = document.querySelectorAll('.card__cont__card')
+const footer_section = document.querySelector('.footer')
 
 
 // ______________________________ ✅ INPUTS ________________________________
@@ -57,6 +59,7 @@ const card_cont_card = document.querySelectorAll('.card__cont__card')
 // ✅
 const getRandomBeer = () =>{
 	url_to_fetch = url + 'random'
+	tag_section.style.display = 'none'
 	restartPageNumber()
 	callAPI()
 }
@@ -64,6 +67,7 @@ const getRandomBeer = () =>{
 const loadGenericGallery = () =>{
 	url_to_fetch = url
 	_sort_by = 'default'
+	tag_section.style.display = 'none'
 	restartPageNumber()
 	closeFilters()
 	callAPI()
@@ -84,7 +88,6 @@ const closeFilters = () => {
 	filter_section.style.display = 'none'
 	header_section.style.display = 'block'
 	hero_section.style.display = 'block'
-	tag_section.style.display = 'block'
 	random_section.style.display = 'block'
 	pagination_section.style.display = 'block'
 	card_section.style.display = 'block'
@@ -93,6 +96,8 @@ const closeFilters = () => {
 // ✅
 const searchFilter = () =>{
 	_beer_nm = filter_search.value
+	tag_section.style.display = 'block'
+	renderSearchedName()
 	closeFilters()
 	searchUrlToFetch()
 }
@@ -106,9 +111,11 @@ const submitFilters = () =>{
 	_per_pg = Number(input_by_page.value)
 	_abv_min = Number(input_abv_min.value)
 	_abv_max = Number(input_abv_max.value) ? Number(input_abv_max.value) : 100
-	_show_as = filter_show_grid.checked ? filter_show_grid.id : filter_show_list.id
-	_sort_by = filter_sort.value[0] === 'A' ? 'abv' : (filter_sort.value[0] === 'N' ? 'name' : 'default')
-	_sort_order = filter_sort.value[2] === 'L'
+	_show_as = input_show_grid.checked ? input_show_grid.id : input_show_list.id
+	_sort_by = input_sort.value[0] === 'A' ? 'abv' : (input_sort.value[0] === 'N' ? 'name' : 'default')
+	_sort_order = input_sort.value[2] === 'L'
+	tag_section.style.display = 'block'
+	renderSelectedFilters()
 	changeGalleryView()
 	restartPageNumber()
 	closeFilters()
@@ -131,8 +138,6 @@ const changeGalleryView = () =>{
 		// console.log('show list')
 	}
 }
-// ❌ render filters in results
-
 // ✅
 const stickyHeader = () =>{
 	header_section.classList.toggle('.header_sticky', window.scrollY > 0);
@@ -209,6 +214,24 @@ const renderGallery = async (jsonRes) =>{
 const renderMatchedResults = async (jsonRes) => {
 	const shell_hero = `${jsonRes.length} matched types of 🍺 to learn about `
 	main_title.innerHTML = shell_hero
+}
+// ✅
+const renderSearchedName = () =>{
+	const applied_search = `
+		<div class="tag__cont_tag">${_beer_nm}</div>`
+	tag_container.innerHTML = applied_search
+}
+// ✅
+const renderSelectedFilters = () =>{
+	const _view = _show_as === 'show_grid' ? 'grid' : 'list'
+	const _order = _sort_order === true ? 'asc' : 'des'
+	const _by = _sort_by === 'default' ? 'default' : `${_sort_by}/${_order}`
+	const applied_filters = `
+		<div class="tag__cont_tag">see ${_per_pg}</div>
+		<div class="tag__cont_tag">${_abv_min}% -${_abv_max}%</div>
+		<div class="tag__cont_tag">see as ${_view}</div>
+		<div class="tag__cont_tag">${_by}</div>`
+	tag_container.innerHTML = applied_filters
 }
 // ✅
 const switchPageVisualization = (jsonRes) => {
