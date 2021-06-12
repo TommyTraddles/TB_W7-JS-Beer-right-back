@@ -1,7 +1,6 @@
 console.log('> ...')
 
 // ______________________________ ✅ VARIABLES DE LA API ___________________
-
 // API
 const url = 'https://api.punkapi.com/v2/beers/'
 const search = '?'
@@ -59,7 +58,6 @@ const footer_section = document.querySelector('.footer')
 
 
 // ______________________________ ✅ INPUTS ________________________________
-
 // ✅
 const getRandomBeer = () =>{
 	url_to_fetch = url + 'random'
@@ -139,7 +137,6 @@ const stickyHeader = () =>{
 }
 
 // ______________________________ ✅ FETCH ________________________________
-
 // ✅
 const callAPI = async () => {	
 	try {
@@ -177,7 +174,6 @@ const sortResults = (jsonRes) =>{
 }
 
 // ______________________________ ✅ RENDER ________________________________
-
 // ✅
 const renderGallery = async (jsonRes) =>{
 	let beer_card = ''
@@ -189,7 +185,7 @@ const renderGallery = async (jsonRes) =>{
 	} else {
 		jsonRes.forEach(e =>{
 			beer_card += `
-			<div class="${show_validate ? 'card__cont__card' : 'card__cont__card-list'}>
+			<div class="${show_validate ? 'card__cont__card' : 'card__cont__card-list'}">
 				<a href="card.html?id=${e.id}" class="card__cont__card__id">
 					<div class="${show_validate ? 'card__cont__card__title' : 'card__cont__card-list__title'}">${e.name}</div>
 					<div class="${show_validate ? 'card__cont__card__ABV' : 'card__cont__card-list__ABV'}"> ABV: ${e.abv}%</div>
