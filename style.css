@@ -253,7 +253,7 @@ body{
 /* -------------------------------------------------- DETAILS */
 
 .detail{
-
+	border: 1px solid red;
 }
 .detail__hero{
 	border: 1px solid red;
