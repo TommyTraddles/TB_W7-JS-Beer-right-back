@@ -100,6 +100,22 @@ body{
 /* ----------------------------- HEADER */
 .header{
 	border: 1px solid blue;
+	background-color: black;
+
+	width: 100vw;
+	/* height: 70px; */
+	/* display: flex;
+	justify-content: space-between;
+	align-items: center; */
+	position: fixed;
+	right: 0;
+    left: 0;
+    /* margin-right: auto;
+    margin-left: auto; */
+	z-index: 9;
+}
+.header_sticky{
+	border: 1px solid: white;
 }
 .header__filter{
 	border: 1px solid blue;
@@ -118,8 +134,12 @@ body{
 .main{
 	border: 1px solid green;
 }
+.hero{
+	border: 1px solid green;
+}
 .main__title{
 	border: 1px solid green;
+	margin-top: 150px;
 }
 
 /* ----------------------------- FILTER-TAGS */

@@ -62,7 +62,8 @@ const getRandomBeer = () =>{
 }
 // ✅
 const loadGenericGallery = () =>{
-	url_to_fetch = url 
+	url_to_fetch = url
+	_sort_by = 'default'
 	restartPageNumber()
 	closeFilters()
 	callAPI()
@@ -132,8 +133,10 @@ const changeGalleryView = () =>{
 }
 // ❌ render filters in results
 
-// ❌ Sticky header
-
+// ✅
+const stickyHeader = () =>{
+	header_section.classList.toggle('.header_sticky', window.scrollY > 0);
+}
 // ❌ FAVORITOS -- ID, sección única -- 
 
 
@@ -231,6 +234,7 @@ const restartPageNumber = () =>{
 }
 
 //
+window.addEventListener('scroll', stickyHeader);
 button_search.addEventListener('click', searchFilter) 
 filter_open.addEventListener('click', openFilters)
 filter_close.addEventListener('click', closeFilters)
