@@ -6,7 +6,7 @@ console.log('> ...')
 const url = 'https://api.punkapi.com/v2/beers/'
 const search = '?'
 const and = '&'
-// API VAR
+// API default values
 let _beer_nm = ''
 let _page_nmb = 1
 let _per_pg = 25
@@ -14,17 +14,10 @@ let _abv_min = 0
 let _abv_max = 100 
 let url_to_fetch = url
 let _show_as = ''
-let _sort_by = 'name'
+let _sort_by = 'default'
 let _sort_order = true
 
 // SELECTOR
-const input_by_page = document.querySelector('#page')
-const input_abv_min = document.querySelector('#avb-min')
-const input_abv_max = document.querySelector('#avb-max')
-const button_clear = document.querySelector('#btn_clear')
-const button_apply = document.querySelector('#btn_apply')
-const button_random = document.querySelector('#btn_random')
-
 const header_section = document.querySelector('.header')
 const hero_section = document.querySelector('.hero')
 const tag_section = document.querySelector('.tag')
@@ -32,21 +25,28 @@ const random_section = document.querySelector('.random')
 const card_section = document.querySelector('.card')
 const footer_section = document.querySelector('.footer')
 
+const input_by_page = document.querySelector('#page')
+const input_abv_min = document.querySelector('#avb-min')
+const input_abv_max = document.querySelector('#avb-max')
+const button_apply = document.querySelector('#btn_apply')
+const button_random = document.querySelector('#btn_random')
+const button_clear = document.querySelector('#btn_clear')
+const clear_tag = document.querySelector('.tag__clear')
+
 const pagination_section = document.querySelector('.page')
 const next_page = document.querySelector('#page__rigth')
 const page_number = document.querySelector('.page__number')
 const prev_page = document.querySelector('#page__left')
-const clear_tag = document.querySelector('.tag__clear')
 
 const filter_section = document.querySelector('.filter')
 const filter_close = document.querySelector('#filter_close')
 const filter_open = document.querySelector('#filter_open')
 const filter_search = document.querySelector('#search_string')
-const button_search = document.querySelector('#btn_search')
 const filter_sort = document.querySelector('#sort')
 const filter_show_grid = document.querySelector('#show_grid')
 const filter_show_list = document.querySelector('#show_list')
-//
+const button_search = document.querySelector('#btn_search')
+
 const main_title = document.querySelector('.main__title')
 const card_cont = document.querySelector('.card__cont')
 const card_cont_card = document.querySelectorAll('.card__cont__card')
@@ -61,7 +61,7 @@ const getRandomBeer = () =>{
 	callAPI()
 }
 // ✅
-const loadgenericGallery = () =>{
+const loadGenericGallery = () =>{
 	url_to_fetch = url 
 	restartPageNumber()
 	closeFilters()
@@ -102,12 +102,11 @@ const searchUrlToFetch = () =>{
 }
 // ✅
 const submitFilters = () =>{
-	console.log('fx. submitFilters')
 	_per_pg = Number(input_by_page.value)
 	_abv_min = Number(input_abv_min.value)
 	_abv_max = Number(input_abv_max.value) ? Number(input_abv_max.value) : 100
 	_show_as = filter_show_grid.checked ? filter_show_grid.id : filter_show_list.id
-	_sort_by = filter_sort.value[0] === 'A' ? 'abv' : 'name'
+	_sort_by = filter_sort.value[0] === 'A' ? 'abv' : (filter_sort.value[0] === 'N' ? 'name' : 'default')
 	_sort_order = filter_sort.value[2] === 'L'
 	changeGalleryView()
 	restartPageNumber()
@@ -122,22 +121,18 @@ const filterUrlToFetch = () =>{
 	url_to_fetch = url + search + abv_range + and + per_page + and + page_number
 	callAPI(url_to_fetch)
 }
-
 // ❌ Crear estilos y modificarlos
 const changeGalleryView = () =>{
 	console.log('fx. changeGalleryView')
 	if(_show_as === 'show_grid'){
-		console.log('show grid')
+		// console.log('show grid')
 	} else {
-		console.log('show list')
+		// console.log('show list')
 	}
 }
-
 // ❌ render filters in results
 
-
 // ❌ Sticky header
-
 
 // ❌ FAVORITOS -- ID, sección única -- 
 
@@ -156,31 +151,38 @@ const callAPI = async () => {
 		console.log(error)
 	}
 }
-// ❌ Falla sort
+// ✅
 const sortResults = (jsonRes) =>{
-	console.log('Fx. sortResults')
-	console.log(_sort_by)
-	console.log(_sort_order)
-	// jsonRes.sort((a,b) =>{
-	// 	if(_sort_order){
-	// 		(a[_sort_by] > b[_sort_by]) ? 1 : ((a[_sort_by] < b[_sort_by]) ? -1 : 0)
-	// 	} else {
-	// 		(b[_sort_by] > a[_sort_by]) ? 1 : ((b[_sort_by] < a[_sort_by]) ? -1 : 0)
-	// 	}
-	// })
+	const sortResultBy = (by,asc) => {
+			if( by === 'default'){
+			return jsonRes
+
+		} if (by === 'name' && asc === true){
+			return jsonRes.sort((a,b) => a[by] > b[by] ? 1 : -1 )
+
+		} if (by === 'name' && asc === false){
+			return jsonRes.sort((a,b) => a[by] > b[by] ? -1 : 1 )
+
+		} if (by === 'abv' && asc === true){
+			return jsonRes.sort((a,b) => a[by] - b[by])
+
+		} if (by === 'abv' && asc === false) {
+			return jsonRes.sort((a,b) => b[by] - a[by])
+		}
+	}
+	sortResultBy(_sort_by, _sort_order)
 	renderGallery(jsonRes)
 	renderMatchedResults(jsonRes)
 }
 
-
 // ______________________________ ✅ RENDER ________________________________
 
-// ❌ Crear estilo BLANK + imagen de error
+// ✅
 const renderGallery = async (jsonRes) =>{
 	let beer_card = ''
 	const image_fail = 'https://bit.ly/3zf0ZlK';
 	if (jsonRes.length < 1){
-		const error_state =`<div class="card_cont_card_error"> ❌ </div>`
+		const error_state =`<div class="card_cont_card_error"> No luck this time </div>`
 		card_cont.innerHTML = error_state
 	} else {
 		jsonRes.forEach(e =>{
@@ -200,7 +202,7 @@ const renderGallery = async (jsonRes) =>{
 	}
 	switchPageVisualization(jsonRes)
 }
-// ❌ Show total amount of matches (not per page)
+// ✅
 const renderMatchedResults = async (jsonRes) => {
 	const shell_hero = `${jsonRes.length} matched types of 🍺 to learn about `
 	main_title.innerHTML = shell_hero
@@ -228,15 +230,14 @@ const restartPageNumber = () =>{
 	page_number.innerHTML = _page_nmb
 }
 
-
 //
 button_search.addEventListener('click', searchFilter) 
 filter_open.addEventListener('click', openFilters)
 filter_close.addEventListener('click', closeFilters)
-clear_tag.addEventListener('click', loadgenericGallery)
-button_clear.addEventListener('click', loadgenericGallery)
+clear_tag.addEventListener('click', loadGenericGallery)
+button_clear.addEventListener('click', loadGenericGallery)
 button_apply.addEventListener('click', submitFilters)
 button_random.addEventListener('click', getRandomBeer)
 prev_page.addEventListener('click', prevPage)
 next_page.addEventListener('click', nextPage)
-loadgenericGallery()
+loadGenericGallery()
