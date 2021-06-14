@@ -3,7 +3,6 @@ console.log('> ...')
 // ❌
 // CALL MAP API
 // RENDER MAP API
-// ADD RANDOM POINTS 
 
 
 // ______________________________ ✅ VARIABLES DE LA API ___________________
