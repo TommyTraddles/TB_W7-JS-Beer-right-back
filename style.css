@@ -644,6 +644,10 @@ body{
 	position: absolute;
 	top: -50px;
 	right: 10%;
+	transition: .1s ease-in-out;
+}
+.detail__hero__image:hover{
+	transform: rotate(2deg);
 }
 .detail__hero__image img{
 	height: 450px;
