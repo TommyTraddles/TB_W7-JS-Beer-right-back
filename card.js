@@ -56,7 +56,7 @@ const renderBeer = (jsonRes) =>{
 			<div class="detail__map__api"> IMG </div>
 			<div class="detail__map__food">
 				<div class="detail__map__food__title">And don’t forget to pair with:</div>
-				<div class="detail__map__food__desc">🥘 ${e.food_pairing}</div>
+				<div class="detail__map__food__desc">🥘 ${e.food_pairing[0]}</div>
 			</div>
 		</section>`
 	})

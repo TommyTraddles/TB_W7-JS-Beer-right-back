@@ -89,7 +89,7 @@ const openFilters = () => {
 // ✅
 const closeFilters = () => {
 	filter_section.style.display = 'none'
-	header_section.style.display = 'block'
+	header_section.style.display = 'flex'
 	hero_section.style.display = 'block'
 	random_section.style.display = 'block'
 	pagination_section.style.display = 'block'
@@ -133,7 +133,7 @@ const filterUrlToFetch = () =>{
 }
 // ✅
 const stickyHeader = () =>{
-	header_section.classList.toggle('.header_sticky', window.scrollY > 0);
+	header_section.classList.toggle('.header_sticky', window.scrollY > 30);
 }
 
 // ______________________________ ✅ FETCH ________________________________
@@ -186,13 +186,17 @@ const renderGallery = async (jsonRes) =>{
 		jsonRes.forEach(e =>{
 			beer_card += `
 			<div class="${show_validate ? 'card__cont__card' : 'card__cont__card-list'}">
-				<a href="card.html?id=${e.id}" class="card__cont__card__id">
+				<a href="card.html?id=${e.id}" class="${show_validate ?'card__cont__card__id' : 'card__cont__card-list__id'}">
+
+				<div class="${show_validate ? 'card__cont__card__image' : 'card__cont__card-list__image'}">
+					<img src="${e.image_url ? e.image_url : image_fail}" alt="">
+				</div>
+
+				<div class="${show_validate ? 'card__cont__card__botom' : 'card__cont__card-list__botom'}">
 					<div class="${show_validate ? 'card__cont__card__title' : 'card__cont__card-list__title'}">${e.name}</div>
 					<div class="${show_validate ? 'card__cont__card__ABV' : 'card__cont__card-list__ABV'}"> ABV: ${e.abv}%</div>
-					<div class="${show_validate ? 'card__cont__card__botom' : 'card__cont__card-list__botom'}"></div>
-					<div class="${show_validate ? 'card__cont__card__image' : 'card__cont__card-list__image'}">
-						<img src="${e.image_url ? e.image_url : image_fail}" alt="">
-					</div>
+				</div>
+
 				</a>
 			</div>`
 		})
