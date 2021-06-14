@@ -52,7 +52,6 @@
 	--fw-regular: 400;
 	--fw-bold: 700;
 }
-
 /* ----------------------------- ✅ */
 *{
 	margin: 0;
@@ -101,8 +100,7 @@ body{
 	background-color: var(--cl-light);
 	color:var(--cl-grey);
 }
-
-/* ----------------------------- ❌ */
+/* ----------------------------- ❌ GRID*/
 .filter{
 	display: none;
 	padding: 12px 20px;
@@ -136,7 +134,10 @@ body{
 	border: 2px solid var(--cl-green);
 	box-shadow: var(--box-shadow) var(--cl-green-light);
 }
-
+#btn_search:hover{
+	border: 2px solid var(--cl-green);
+	box-shadow: var(--box-shadow) var(--cl-green-light);
+}
 /* FILTERS */
 .filter__filter{
 	margin-top: var(--input-margin);
@@ -198,11 +199,12 @@ body{
 #show_list{
 	height: var(--input-height);
 }
-#show_grid:active{
+#show_grid:checked, #show_list:checked{
 	background-color: red;
 }
-#show_list:active{
-	background-color: red;
+#show_grid:hover, #show_list:hover{
+	border: 2px solid var(--cl-green);
+	box-shadow: var(--box-shadow) var(--cl-green-light);
 }
 /* RESULTS */
 .filter__results{
@@ -225,14 +227,37 @@ body{
 	border: 2px solid var(--cl-green);
 	box-shadow: var(--box-shadow) var(--cl-green-light);
 }
-
 /* BUTTONS */
 .filter__buttons{
 	margin-top: var(--input-margin);
+	display: flex;
+	justify-content: flex-end;
+	gap: 16px;
 }
-
-
-
+#btn_clear{
+	width: 150px;
+	height: 56px;
+	border: 2px solid var(--cl-yellow);
+	border-radius: var(--box-radius);
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-16);
+	color: var(--cl-yellow);
+}
+#btn_clear:hover{
+	box-shadow: var(--box-shadow) var(--cl-yellow-shadow);
+}
+#btn_apply{
+	width: 150px;
+	height: 56px;
+	border-radius: var(--box-radius);
+	background-color: var(--cl-green);
+	color:var(--cl-light);
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-16);
+}
+#btn_apply:hover{
+	box-shadow: var(--box-shadow) var(--cl-green-shadow);
+}
 
 /* ----------------------------- ❌ */
 .header{
@@ -447,7 +472,9 @@ body{
 	height: 170px;
 }
 .card_cont_card_error{
-	border: 1px solid red;
+	text-align: center;
+	font-weight: var(--fw-bold);
+	color: var(--cl-green);
 }
 /* LIST */
 .card__cont__card-list{
@@ -527,9 +554,39 @@ body{
 	box-shadow: var(--box-shadow) var(--cl-light-shadow);
 }
 
-/* ----------------------------- ❌ */
+/* ----------------------------- ❌ HERO DONT CENTER ITSELF */
+.mobile__header{
+	margin-top: 20px;
+	background-color: red;
+	display: flex;
+}
 .home__button{
-	border: 1px solid red;
+	display: flex;
+	justify-content: center;
+}
+.home__button__go{
+	height: 90px;
+	width: var(--box-list-width);
+	border-radius: var(--box-radius);
+	background-color: var(--cl-yellow);
+	font: var(--cl-dark);
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-22);
+	color:var(--cl-dark);
+	margin: auto;
+	/* position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	text-align: left;
+	padding-left: 20px; */
+	transition: .2s ease-in-out;
+	cursor: pointer;
+}
+.home__button__go:hover{
+	box-shadow: var(--box-shadow) var(--cl-yellow-shadow);
+	color: var(--cl-light);
 }
 
 /* ----------------------------- ❌ */
