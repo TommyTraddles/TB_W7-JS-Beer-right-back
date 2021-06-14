@@ -99,11 +99,12 @@ button{
 body{
 	background-color: var(--cl-light);
 	color:var(--cl-grey);
+	margin: auto;
 }
 /* ----------------------------- ❌ GRID*/
 .filter{
 	display: none;
-	padding: 12px 20px;
+	padding: 12px 15%;
 }
 .filter__control{
 	display: flex;
@@ -262,14 +263,13 @@ body{
 /* ----------------------------- ❌ */
 .header{
 	background-color: var(--cl-light);
-	
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
 	position: fixed;
 	right: 0;
-	padding: 12px 20px;
+	padding: 12px 10%;
 	left: 0;
 	margin-left: auto;
 	margin-right: auto;
@@ -644,16 +644,6 @@ body{
 }
 
 /* ----------------------------- ❌ */
-@media only screen and (min-device-width: 2048px){
-	.filter,
-	.header,
-	.main,
-	.tag,
-	.random,
-	.card,
-	.page,
-	/* footer, */
-	.home__button{
-		display: none;
-	}
+@media only screen and (min-device-width: 700px){
+	
 }
