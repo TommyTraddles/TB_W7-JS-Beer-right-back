@@ -135,6 +135,9 @@ body{
 	border: 2px solid var(--cl-green);
 	box-shadow: var(--box-shadow) var(--cl-green-light);
 }
+#btn_search{
+	margin-left: 8px;
+}
 #btn_search:hover{
 	border: 2px solid var(--cl-green);
 	box-shadow: var(--box-shadow) var(--cl-green-light);
@@ -446,6 +449,9 @@ body{
 	padding: 12px;
 	position: absolute;
 	bottom: 0;
+}
+.card_cont_card__bottom_cont{
+	/* display: flex; */
 }
 .card__cont__card__title{
 	color: var(--cl-grey-dark);

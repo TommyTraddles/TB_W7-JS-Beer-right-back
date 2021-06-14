@@ -193,8 +193,10 @@ const renderGallery = async (jsonRes) =>{
 				</div>
 
 				<div class="${show_validate ? 'card__cont__card__botom' : 'card__cont__card-list__botom'}">
-					<div class="${show_validate ? 'card__cont__card__title' : 'card__cont__card-list__title'}">${e.name}</div>
-					<div class="${show_validate ? 'card__cont__card__ABV' : 'card__cont__card-list__ABV'}"> ABV: ${e.abv}%</div>
+					<div class="card_cont_card__bottom_cont">
+						<div class="${show_validate ? 'card__cont__card__title' : 'card__cont__card-list__title'}">${e.name}</div>
+						<div class="${show_validate ? 'card__cont__card__ABV' : 'card__cont__card-list__ABV'}"> ABV: ${e.abv}%</div>
+					</div>
 				</div>
 
 				</a>
