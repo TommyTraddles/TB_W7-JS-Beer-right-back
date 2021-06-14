@@ -301,10 +301,7 @@ body{
 }
 
 /* ----------------------------- ✅ */
-.main{
-	border: 1px solid green;
-	padding: 0 5%;
-}
+
 .hero{
 	border: 1px solid var(--cl-light);
 	padding: 0 5%;
@@ -500,14 +497,14 @@ body{
 .card__cont__card-list:hover .card__cont__card-list__image img{
 	transform: translateX(50px);
 }
-.card__cont__card-list__id{
-	position: absolute;
-}
 .card__cont__card-list__botom{
 	position: relative;
 	width: 170px;
-	left: 160px;
+	left: 120px;
 	top: 25px;
+}
+.card__cont__card-list__id{
+	position: absolute;
 }
 .card__cont__card-list__title{
 	font-weight: bold;
@@ -554,7 +551,7 @@ body{
 	box-shadow: var(--box-shadow) var(--cl-light-shadow);
 }
 
-/* ----------------------------- ❌ HERO DONT CENTER ITSELF */
+/* ----------------------------- ✅ */
 .mobile__header{
 	margin-top: 20px;
 	background-color: red;
@@ -721,5 +718,12 @@ body{
 
 /* ----------------------------- ❌ */
 @media only screen and (min-device-width: 700px){
-
+	.detail{
+		width: 700px;
+		margin: 0 auto;
+	}
+	.main__title{
+		text-align: center;
+		width: auto;
+	}
 }
