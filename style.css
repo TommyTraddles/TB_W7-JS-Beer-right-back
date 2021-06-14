@@ -589,12 +589,12 @@ body{
 	color: var(--cl-light);
 }
 
-/* ----------------------------- ❌ */
-
+/* ----------------------------- ❌ OVERLAP */
 
 .detail{
 	border: 1px solid var(--cl-light);
 }
+/* Hero */
 .detail__hero{
 	margin-top: 150px;
 	background-color: var(--cl-green-light);
@@ -630,7 +630,7 @@ body{
 	background-color: var(--cl-green);
 	color: var(--cl-green-light);
 	border-radius: var(--box-radius);
-	padding: 4px 8px;
+	padding: 4px 12px;
 }
 .detail__hero__abv{
 	font-weight: var(--fw-regular);
@@ -638,7 +638,7 @@ body{
 	background-color: var(--cl-green);
 	color: var(--cl-green-light);
 	border-radius: var(--box-radius);
-	padding: 4px 8px;
+	padding: 4px 12px;
 }
 .detail__hero__image{
 	position: absolute;
@@ -648,81 +648,60 @@ body{
 .detail__hero__image img{
 	height: 450px;
 }
-
-
-
-
-/* DETAIL */
+/* Details */
 .detail_info{
-	border: 1px solid red;
-	/* position: absolute;
-	bottom: 1; */
+	z-index: 9999;
 }
 .detail_info__description{
 	background-color: var(--cl-green);
 	border-radius: var(--box-radius);
-	padding: 24px 30% 50px 24px;
+	padding: 24px 35% 50px 24px;
 	line-height: 1.80;
 	font-weight: var(--fw-bold);
 	color: var(--cl-light);
-	/* position: absolute; */
-	bottom: -175px;
 
 }
-
-
-
-
 /* INGREDIENTS  */
 .detail__ingredients{
 	display: none;
 	font-weight: var(--fw-regular);
 	font-size: var(--fs-12);
 	color: var(--cl-grey);
-	/* position: relative; */
-	bottom: -425px;
 }
-
-
-
-
-
 /* API */
 .detail__map{
-	border: 1px solid red;
-	/* position: relative; */
-	bottom: -450px;
-
+	margin-top: 20px;
+	margin-bottom: 80px;
+	position: relative;
 }
 .detail__map__title{
-	border: 1px solid red;
 	font-weight: var(--fw-bold);
 	font-size: var(--fs-16);
 	color: var(--cl-grey);
+	text-align: center;
+	margin-bottom: 20px;
 }
 .detail__map__api{
-	height: 196px;
-	width: var(--box-list-width);
+	height: 200px;
+	width: 80%;
 	background-color: var(--cl-green-light);
 	border-radius: var(--box-radius);
 	margin-top: 20px;
 	margin: 0 auto;
+	text-align: center;
+	line-height: 180px;
 }
-
-
-
-
 /* RECOMMEND */
 .detail__map__food{
-	width: 211px;
+	width: 200;
 	height: 150px;
 	background-color: var(--cl-light);
 	box-shadow: var(--box-shadow) var(--cl-light-shadow);
 	border-radius: var(--box-radius);
-	/* position: absolute; */
-	right: 20px;
+	position: absolute;
+	right: 20%;
 	bottom: -250px;
-	padding: 16px 20px;
+	padding: 20px;
 	margin-bottom: 150px;
 }
 .detail__map__food__title{
@@ -733,10 +712,6 @@ body{
 	font-size: var(--fs-14);
 	font-weight: var(--fw-bold);
 }
-
-
-
-
 
 
 
