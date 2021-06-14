@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 4</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="mob_3--Filter" transform="translate(-129.000000, -748.000000)">
+            <g id="Group-4" transform="translate(131.000000, 750.000000)">
+                <circle id="Oval-Copy-14" fill="#188172" transform="translate(11.500000, 13.500000) scale(-1, 1) translate(-11.500000, -13.500000) " cx="11.5" cy="13.5" r="2.5"></circle>
+                <circle id="Oval-Copy-15" fill="#188172" transform="translate(11.500000, 20.500000) scale(-1, 1) translate(-11.500000, -20.500000) " cx="11.5" cy="20.5" r="2.5"></circle>
+                <circle id="Oval-Copy-16" fill="#188172" transform="translate(11.500000, 26.500000) scale(-1, 1) translate(-11.500000, -26.500000) " cx="11.5" cy="26.5" r="2.5"></circle>
+                <line x1="18" y1="13.5" x2="30" y2="13.5" id="Path-3" stroke="#188172" stroke-width="3" stroke-linecap="round"></line>
+                <line x1="18" y1="20.5" x2="30" y2="20.5" id="Path-3-Copy" stroke="#188172" stroke-width="3" stroke-linecap="round"></line>
+                <line x1="18" y1="26.5" x2="30" y2="26.5" id="Path-3-Copy-2" stroke="#188172" stroke-width="3" stroke-linecap="round"></line>
+                <path d="M9.85560162,0.100050185 C13.2370677,0.0333500618 16.6185339,0 20,0 C23.3814667,0 26.7629335,0.0333500741 30.1444002,0.100050222 L30.1444002,0.100052019 C35.5478855,0.206636911 39.888965,4.58720543 39.9466157,9.99143432 C39.9822052,13.3276229 40,16.6638114 40,20 C40,23.336189 39.9822052,26.6723779 39.9466157,30.0085669 L39.9466146,30.0085668 C39.8889638,35.4127961 35.547884,39.7933649 30.1443984,39.8999498 C26.7629323,39.9666499 23.3814661,40 20,40 C16.6185333,40 13.2370665,39.9666499 9.85559975,39.8999498 L9.85559979,39.899948 C4.45211451,39.7933631 0.11103503,35.4127946 0.0533842597,30.0085657 C0.0177947532,26.6723771 0,23.3361886 0,20 C0,16.663811 0.0177947574,13.3276221 0.0533842723,9.99143314 L0.0533853796,9.99143315 C0.11103616,4.58720388 4.45211596,0.206635065 9.85560162,0.100050185 Z" id="Mask-Copy-5" stroke="#188172" stroke-width="3" transform="translate(20.000000, 20.000000) scale(-1, 1) translate(-20.000000, -20.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
-	<!-- <link rel="icon" type="image/png" href="assets/logo-color.svg" sizes="16x16"> -->
+	<link rel="icon" type="image/png" href="assets/logo_favicon.svg" sizes="16x16">
 
 	<title>🍺 BRB | Results</title>
 </head>
@@ -16,18 +16,23 @@
 	<aside class="filter">
 		<!-- ✅  -->
 		<div class="filter__control">
-			<button id="filter_close" class="round__button"> ⬅️ </button>
+			<button id="filter_close" class="big__button button_style">
+				<img src="assets/icon_filter_close.svg" alt="">
+			</button>
 		</div>
 		<!-- ✅ SEARCH  -->
 		<div class="filter__search">
 			<p>search by name </p>
-			<input type="search" name="" id="search_string" placeholder="Punk IPA...">
-			<button id="btn_search">Search</button>
-		</div>
+			<div class="filter__search__cont">
+				<input type="search" name="" id="search_string" placeholder="Punk IPA...">
+				<button id="btn_search" class="med__button button_style">
+					<img src="assets/icon_filter_search.svg" alt="">
+				</button>
+						</div>
+			</div>
 		<!-- ✅ FILTER -->
 		<div class="filter__filter">
 			<p>Filter your beer</p>
-
 			<div class="filter__filter__AVB">
 				<label for="">AVB</label>
 				<div class="filter__filter__AVB_slider">
@@ -35,28 +40,10 @@
 					<input type="number" name="avb" id="avb-max" min="0" max="60" placeholder="60">
 				</div>
 			</div>
-
-			<!-- <div class="filter__filter__IBU">
-				<label for="">IBU</label>
-				<span class="filter__filter__IBU_range">Range</span>
-				<div class="filter__filter__IBU_slider">Slider</div>
-			</div> -->
-
-			<!-- <div class="filter__filter__EBC">
-				<label for="">EBC</label>
-				<span class="filter__filter__EBC_range">Range</span>
-				<div class="filter__filter__EBC_slider">Slider</div>
-			</div> -->
-
-			<!-- <div class="filter__filter__brew">
-				<label for="">brewing dates</label>
-				<span class="filter__filter__brew_range">Range</span>
-				<div class="filter__filter__brew_slider">Slider</div>
-			</div> -->
 		</div> 
 		<!-- ✅ SORT -->
 		<div class="filter__sort">
-			<label for="">Sort by</label>
+			<p>Sort by</p>
 			<select name="sort" id="sort">
 				<option value="Default">Default</option>
 				<option value="A-L">ABV: low-high</option>
@@ -67,17 +54,21 @@
 		</div>
 		<!-- ✅ SHOW -->
 		<div class="filter__show">
-			<label for="">Show as</label>
+			<p>Show as</p>
 			<label for="">
-				<input type="radio" name="show" id="show_grid" checked> Grid
+				<input type="radio" name="show" id="show_grid" checked> 
+				<img src="assets/icon_filter_grid.svg" alt=""> 
+				Grid
 			</label>
 			<label for="">
-				<input type="radio" name="show" id="show_list"> List
+				<input type="radio" name="show" id="show_list"> 
+				<img src="assets/icon_filter_list.svg" alt=""> 
+				List
 			</label>
 		</div>
 		<!-- ✅  RESULTS -->
 		<div class="filter__results">
-			<label for="">Results by page</label>
+			<p>Results by page</p>
 			<select name="page" id="page">
 				<option value="5">5</option>
 				<option value="10">10</option>
@@ -96,12 +87,16 @@
 	<!-- ✅ HEADER -->
 	<header class="header">
 		<div class="header__filter">
-			<button id="filter_open" class="round__button">🎚</button>
+			<button id="filter_open" class="big__button">
+				<img src="/assets/icon_filter.svg" alt="">
+			</button>
 		</div>
 		<a href="index.html">
-			<div class="header__logo">beer right back</div>
+			<div class="header__logo">
+				<img src="assets/logo-full.svg" alt="">
+			</div>
 		</a>
-		<div class="header__user round__button">🤖</div>
+		<div class="header__user big__button">🤖</div>
 	</header>
 
 	<!-- ✅ HERO -->
@@ -120,7 +115,12 @@
 
 	<!-- ✅ RANDOM -->
 	<section class="random">
-		<button id="btn_random"> Get a random beer </button>
+		<button id="btn_random"> 
+			Get a random beer 
+			<span class="btn_random_beer">
+				<span class="btn_random_beer_icon">🍺</span>
+			</span>
+		</button>
 	</section>
 
 	<!-- ✅ CARD -->
@@ -131,15 +131,15 @@
 
 	<!-- ✅ PAGINATION -->
 	<section class="page">
-		<button id="page__left"> ← </button>
-		<span class="page__number"> 1 </span>
-		<button id="page__rigth"> → </button>
+		<button id="page__left" class="button_style med__button"> ← </button>
+		<span class="page__number med__button button_style"> 1 </span>
+		<button id="page__rigth" class="button_style med__button"> → </button>
 	</section>
 
 	<!-- ✅ FOOTER -->
 	<footer class="footer">
 		<div class="footer__face">
-			💀
+			<img src="assets/sandboxer.png" alt="" class="med__button">
 		</div>
 	</footer>
 

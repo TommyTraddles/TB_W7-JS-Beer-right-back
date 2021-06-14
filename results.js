@@ -92,9 +92,9 @@ const closeFilters = () => {
 	header_section.style.display = 'flex'
 	hero_section.style.display = 'block'
 	random_section.style.display = 'block'
-	pagination_section.style.display = 'block'
 	card_section.style.display = 'block'
-	footer_section.style.display = 'block'
+	pagination_section.style.display = 'flex'
+	footer_section.style.display = 'flex'
 }
 // ✅
 const searchFilter = () =>{
