@@ -40,10 +40,14 @@ const renderBeer = (jsonRes) =>{
 	jsonRes.forEach(e =>{
 		selected_beer += `
 		<section class="detail__hero">
-			<div class="detail__hero__name">${e.name}</div>
-			<div class="detail__hero__tagline">${e.tagline}</div>
-			<div class="detail__hero__brew">First brewed: ${e.first_brewed}</div>
-			<div class="detail__hero__abv">ABV: ${e.abv}%</div>
+			<div class="detail__hero__texts">
+				<div class="detail__hero__name">${e.name}</div>
+				<div class="detail__hero__tagline">${e.tagline}</div>
+				<div class="taglines__container">
+					<div class="detail__hero__brew">First brewed: ${e.first_brewed}</div>
+					<div class="detail__hero__abv">ABV: ${e.abv}%</div>
+				</div>
+			</div>
 			<div class="detail__hero__image">
 				<img src="${e.image_url ? e.image_url : image_fail}" alt="${e.name}"></div>
 		</section>
@@ -53,7 +57,7 @@ const renderBeer = (jsonRes) =>{
 		<section class="detail__ingredients"> 'INGREDIENTS PENDING' </section>
 		<section class="detail__map">
 			<div class="detail__map__title"> Find yours 📍 here </div>
-			<div class="detail__map__api"> IMG </div>
+			<div class="detail__map__api"> ❌ Call not integrated due time </div>
 			<div class="detail__map__food">
 				<div class="detail__map__food__title">And don’t forget to pair with:</div>
 				<div class="detail__map__food__desc">🥘 ${e.food_pairing[0]}</div>

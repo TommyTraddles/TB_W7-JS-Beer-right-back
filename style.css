@@ -260,7 +260,7 @@ body{
 	box-shadow: var(--box-shadow) var(--cl-green-shadow);
 }
 
-/* ----------------------------- ❌ */
+/* ----------------------------- ✅ */
 .header{
 	background-color: var(--cl-light);
 	display: flex;
@@ -282,9 +282,9 @@ body{
 .header__filter{
 	display: flex;
 }
-.header__back{
-	border: 1px solid blue;
-}
+/* .header__back{
+
+} */
 .header__logo{
 	font-size: var(--fs-16);
 	color: var(--cl-grey);
@@ -591,59 +591,156 @@ body{
 
 /* ----------------------------- ❌ */
 
+
 .detail{
-	border: 1px solid red;
+	border: 1px solid var(--cl-light);
 }
 .detail__hero{
-	border: 1px solid red;
+	margin-top: 150px;
+	background-color: var(--cl-green-light);
+	border-radius: var(--box-radius);
+	display: flex;
+	position: relative;
+}
+.detail__hero__texts{
+	padding: 40px 20px 150px;
+	width: 50%;
+	text-align: right;
 }
 .detail__hero__name{
-	border: 1px solid red;
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-34);
+	color: var(--cl-green);
 }
 .detail__hero__tagline{
-	border: 1px solid red;
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-16);
+	color: var(--cl-grey);
+	margin-bottom: 16px;
+}
+.taglines__container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 8px;
 }
 .detail__hero__brew{
-	border: 1px solid red;
+	font-weight: var(--fw-regular);
+	font-size: var(--fs-14);
+	background-color: var(--cl-green);
+	color: var(--cl-green-light);
+	border-radius: var(--box-radius);
+	padding: 4px 8px;
 }
 .detail__hero__abv{
-	border: 1px solid red;
+	font-weight: var(--fw-regular);
+	font-size: var(--fs-14);
+	background-color: var(--cl-green);
+	color: var(--cl-green-light);
+	border-radius: var(--box-radius);
+	padding: 4px 8px;
 }
 .detail__hero__image{
-	border: 1px solid red;
+	position: absolute;
+	top: -50px;
+	right: 10%;
 }
+.detail__hero__image img{
+	height: 450px;
+}
+
+
+
+
 /* DETAIL */
 .detail_info{
 	border: 1px solid red;
+	/* position: absolute;
+	bottom: 1; */
 }
 .detail_info__description{
-	border: 1px solid red;
+	background-color: var(--cl-green);
+	border-radius: var(--box-radius);
+	padding: 24px 30% 50px 24px;
+	line-height: 1.80;
+	font-weight: var(--fw-bold);
+	color: var(--cl-light);
+	/* position: absolute; */
+	bottom: -175px;
+
 }
+
+
+
+
+/* INGREDIENTS  */
 .detail__ingredients{
-	border: 1px solid red;
+	display: none;
+	font-weight: var(--fw-regular);
+	font-size: var(--fs-12);
+	color: var(--cl-grey);
+	/* position: relative; */
+	bottom: -425px;
 }
+
+
+
+
+
 /* API */
 .detail__map{
 	border: 1px solid red;
+	/* position: relative; */
+	bottom: -450px;
+
 }
 .detail__map__title{
 	border: 1px solid red;
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-16);
+	color: var(--cl-grey);
 }
 .detail__map__api{
-	border: 1px solid red;
+	height: 196px;
+	width: var(--box-list-width);
+	background-color: var(--cl-green-light);
+	border-radius: var(--box-radius);
+	margin-top: 20px;
+	margin: 0 auto;
 }
+
+
+
+
 /* RECOMMEND */
 .detail__map__food{
-	border: 1px solid red;
+	width: 211px;
+	height: 150px;
+	background-color: var(--cl-light);
+	box-shadow: var(--box-shadow) var(--cl-light-shadow);
+	border-radius: var(--box-radius);
+	/* position: absolute; */
+	right: 20px;
+	bottom: -250px;
+	padding: 16px 20px;
+	margin-bottom: 150px;
 }
 .detail__map__food__title{
-	border: 1px solid red;
+	font-size: var(--fs-12);
+
 }
 .detail__map__food__desc{
-	border: 1px solid red;
+	font-size: var(--fs-14);
+	font-weight: var(--fw-bold);
 }
+
+
+
+
+
+
 
 /* ----------------------------- ❌ */
 @media only screen and (min-device-width: 700px){
-	
+
 }
