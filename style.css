@@ -274,7 +274,9 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 	z-index: 9;
-
+}
+.mobile_head{
+	justify-content: center;
 }
 .header_sticky{
 	background-color: var(--cl-red);
